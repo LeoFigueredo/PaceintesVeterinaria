@@ -21,8 +21,8 @@ const Cita = ({cita, eliminarCita}) => (
 );
 
 Cita.propTypes = {
-    cita: PropTypes.object.isrequired,
-    eliminarCita: PropTypes.func.isrequired,
+    cita: PropTypes.object.isRequired,
+    eliminarCita: PropTypes.func.isRequired,
     
 
 }

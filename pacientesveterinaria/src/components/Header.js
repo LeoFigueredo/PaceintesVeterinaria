@@ -6,9 +6,10 @@ const Header = ({titulo}) => (
         <h1 className = "text-center">{titulo}</h1>
     </header>
 
-); 
+);
+
 Header.propTypes = {
-    titulo = PropTypes.string.isRequired
+    titulo : PropTypes.string.isRequired
 }
 
 
