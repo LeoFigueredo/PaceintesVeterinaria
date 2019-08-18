@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import uuid from 'uuid';
 
 class NuevaCita extends Component {
 state = {
@@ -6,10 +7,10 @@ state = {
         mascota : '', 
         propietario : '',
         fecha : '',
-        hora: '',
-        sintomas: ''
+        hora : '',
+        sintomas : ''
     }, 
-    error: false; 
+    error: false 
 }    
 handleChange = e => {
 
@@ -36,7 +37,12 @@ handleSubmit = e => {
         return; 
     }
 
+    //generar objeto con los datos 
+    const nuevaCita = {...this.state.cita};
+    nuevaCita.id = uuid();
+
     //agregar al state de citas 
+    this.props.crearNuevaCita(nuevaCita);
 
 }
 
@@ -47,7 +53,7 @@ handleSubmit = e => {
                     <h2 className = "card-title text-center mb-5">
                         Crear una nueva cita
                     </h2>
-                        <form onsubmit={this.handleSubmit}>
+                        <form onSubmit={this.handleSubmit}>
                             <div className="form-group row">
                                 <label className= "col-sm-4 col-lg-2 col-form-label">
                                     Nombre de la mascota: 
