@@ -8,7 +8,8 @@ state = {
         fecha : '',
         hora: '',
         sintomas: ''
-    }
+    }, 
+    error: false; 
 }    
 handleChange = e => {
 
@@ -19,6 +20,25 @@ handleChange = e => {
         }
     })
 }
+//cuando el usuario envial el form
+handleSubmit = e => {
+    e.preventDefault();
+
+    //extraer los valores del state
+    const { mascota, propietario, fecha, hora, sintomas} = this.state.cita; 
+
+    //validar que todos los campos esten llenos
+    if( mascota === '' || propietario=== '' || fecha === '' || hora === '' || sintomas === '')
+    {
+        this.setState({
+            error: true
+        });
+        return; 
+    }
+
+    //agregar al state de citas 
+
+}
 
     render() {
         return (
@@ -27,7 +47,7 @@ handleChange = e => {
                     <h2 className = "card-title text-center mb-5">
                         Crear una nueva cita
                     </h2>
-                        <form>
+                        <form onsubmit={this.handleSubmit}>
                             <div className="form-group row">
                                 <label className= "col-sm-4 col-lg-2 col-form-label">
                                     Nombre de la mascota: 
